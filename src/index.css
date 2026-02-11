@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,47 +15,31 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+    /* Layout */
+    --layout-padding-mobile: 1rem;
+    --layout-padding-tablet: 1.5rem;
+    --layout-padding-desktop: 2rem;
+  
+    /* Grid */
+    --dashboard-cols-mobile: 1;
+    --dashboard-cols-tablet: 2;
+    --dashboard-cols-desktop: 4;
+  
+    /* Charts */
+    --chart-mode: mobile;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@media (min-width: 640px) {
+  :root {
+    --chart-mode: tablet;
+  }
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@media (min-width: 1024px) {
+  :root {
+    --chart-mode: desktop;
+  }
 }
 
 @media (prefers-color-scheme: light) {
