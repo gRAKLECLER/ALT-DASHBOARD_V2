@@ -19,6 +19,13 @@ export const ToolCard = ({
 }: ToolCardProps) => {
   const isActive = tool.status === "active";
 
+  const badgeGradientMap: Record<string, string> = {
+    green: "from-emerald-400 to-emerald-700",
+    violet: "from-purple-400 to-purple-700",
+    orange: "from-orange-400 to-orange-700",
+    red: "from-pink-500 to-red-700",
+  };
+
   return (
     <div
       className="
@@ -30,6 +37,8 @@ export const ToolCard = ({
         hover:shadow-md
         transition-all
         duration-300
+        hover:-translate-y-1
+        hover:shadow-lg
         group
       "
     >
@@ -85,7 +94,7 @@ export const ToolCard = ({
           <span className="font-medium text-gray-800">
             Last Update:
           </span>{" "}
-          {/* {new Date(tool.updated_at).toLocaleDateString()} */}
+          {new Date(tool.updated_at).toLocaleDateString()}
         </p>
       </div>
 

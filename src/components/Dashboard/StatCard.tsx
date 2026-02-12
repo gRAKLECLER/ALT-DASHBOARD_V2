@@ -46,18 +46,31 @@ const formatMaxValue = (num?: string | number) => {
 };
 
   return (
-    <div className="
-      bg-white 
-      rounded-2xl 
-      shadow-sm 
-      border 
-      border-gray-100
-      p-6 
+    <div
+    className={`
+      bg-white
+      rounded-2xl
+      shadow-sm
+      border border-gray-100
+      p-6
       relative
-    ">
-      {/* Icon top right */}
-      <div className="absolute top-6 right-6">
-        <div className={`bg-gradient-to-br ${iconGradientMap[variant]} text-white p-3 rounded-xl`}>
+      transform
+      transition-all
+      duration-200
+      hover:-translate-y-1
+      hover:shadow-lg
+    `}
+  >
+       {/* Icon */}
+       <div className="absolute top-6 right-6">
+        <div
+          className={`
+            bg-gradient-to-br ${iconGradientMap[variant]}
+            text-white
+            p-3
+            rounded-xl
+          `}
+        >
           {icon}
         </div>
       </div>
@@ -69,8 +82,15 @@ const formatMaxValue = (num?: string | number) => {
 
       {/* Value */}
       <div className="mt-6 flex items-end gap-2">
-        <span className="text-3xl font-bold text-gray-900">{isCurrency ? formatCurrency(value) : value}</span>
-        {maxValue && <span className="text-2xl font-semibold text-gray-400">/{isCurrency ? formatMaxValue(maxValue) : maxValue}</span>}
+        <span className="text-3xl font-bold text-gray-900">
+          {isCurrency ? formatCurrency(value) : value}
+        </span>
+
+        {maxValue && (
+          <span className="text-2xl font-semibold text-gray-400">
+            /{isCurrency ? formatMaxValue(maxValue) : maxValue}
+          </span>
+        )}
       </div>
 
       {/* Percentage Badge */}

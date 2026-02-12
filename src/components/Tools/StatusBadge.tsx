@@ -1,11 +1,11 @@
 type Status = "active" | "unused" | "expiring" | "disabled" | "archived";
 
 const statusStyles: Record<Status, string> = {
-  active: "bg-emerald-100 text-emerald-600",
-  unused: "bg-gray-100 text-gray-600",
-  expiring: "bg-amber-100 text-amber-600",
-  disabled: "bg-red-100 text-red-600",
-  archived: "bg-slate-100 text-slate-500",
+  active: "from-emerald-400 to-emerald-700",
+  unused: "from-pink-500 to-red-700",
+  expiring: "from-orange-400 to-orange-700",
+  disabled: "bg-grey-100 text-grey-600",
+  archived: "from-purple-400 to-purple-700",
 };
 
 export const StatusBadge = ({ status }: { status: Status }) => {
@@ -13,7 +13,8 @@ export const StatusBadge = ({ status }: { status: Status }) => {
     <span
       className={`
         px-3 py-1 text-sm font-medium rounded-full
-        ${statusStyles[status]}
+        text-white
+        bg-gradient-to-r ${statusStyles[status]}
         transition-all duration-200
       `}
     >

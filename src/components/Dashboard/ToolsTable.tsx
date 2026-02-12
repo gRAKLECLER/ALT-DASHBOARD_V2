@@ -1,21 +1,41 @@
+import { useState } from "react";
 import { useTools } from "../../hooks/get/useDashboardTools";
 
 export const ToolsTable = () => {
   const { tools } = useTools();
 
-  const getStatusStyle = (status?: string) => {
-    if (!status) return "bg-gray-100 text-gray-500";
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
-    switch (status.toLowerCase()) {
-      case "active":
-        return "bg-emerald-50 text-emerald-600";
-      case "expiring":
-        return "bg-amber-50 text-amber-600";
-      case "unused":
-        return "bg-rose-50 text-rose-600";
-      default:
-        return "bg-gray-100 text-gray-500";
-    }
+  // Calcul des pages
+  const totalPages = tools ? Math.ceil(tools.length / itemsPerPage) : 0;
+
+  // Items affichés sur la page courante
+  const currentItems = tools
+    ? tools.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+    : [];
+
+//   const getStatusStyle = (status?: string) => {
+//     if (!status) return "bg-gray-100 text-gray-500";
+
+//     switch (status.toLowerCase()) {
+//       case "active":
+//         return "from-emerald-400 to-emerald-700";
+//       case "expiring":
+//         return "bg-amber-50 text-amber-600";
+//       case "unused":
+//         return "bg-rose-50 text-rose-600";
+//       default:
+//         return "bg-gray-100 text-gray-500";
+//     }
+//   };
+
+  const statusStyles: Record<Status, string> = {
+    active: "from-emerald-400 to-emerald-700",
+    unused: "from-pink-500 to-red-700",
+    expiring: "from-orange-400 to-orange-700",
+    disabled: "bg-grey-100 text-grey-600",
+    archived: "from-purple-400 to-purple-700",
   };
 
   return (
@@ -29,7 +49,7 @@ export const ToolsTable = () => {
         shadow-[0px_10px_30px_-15px_rgba(0,0,0,0.15)] 
         p-8">
       
-      {/* Header */}
+
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-lg font-semibold text-gray-800">
           Recent Tools
@@ -38,14 +58,10 @@ export const ToolsTable = () => {
           Last 30 days
         </span>
       </div>
-
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
-          
-          {/* Head */}
           <thead>
-            <tr className="text-gray-400 border-b border-gray-200">
+            <tr className="text-gray-600 border-b border-gray-200">
               <th className="text-left py-4 font-medium w-[35%]">Tool</th>
               <th className="text-left py-4 font-medium w-[25%]">Department</th>
               <th className="text-left py-4 font-medium w-[10%]">Users</th>
@@ -56,11 +72,15 @@ export const ToolsTable = () => {
 
           {/* Body */}
           <tbody>
-            {tools?.map((item) => (
+            {currentItems?.map((item) => (
               <tr
-                key={item.id}
-                className="border-b border-gray-100 last:border-0 hover:bg-gray-50/60 transition-colors"
-              >
+              key={item.id}
+              className="
+                border-b border-gray-100 last:border-0 
+                hover:bg-gray-50 dark:hover:bg-gray-200/20 
+                transition-colors
+              "
+            >
                 {/* TOOL */}
                 <td className="py-5">
                   <div className="flex items-center gap-4">
@@ -97,11 +117,9 @@ export const ToolsTable = () => {
                 {/* STATUS */}
                 <td className="py-5">
                   <span
-                    className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${getStatusStyle(
-                      item.status
-                    )}`}
+                    className={`text-white inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${statusStyles[item.status]}`}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
+                   
                     {item.status}
                   </span>
                 </td>
@@ -110,6 +128,27 @@ export const ToolsTable = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="flex justify-end items-center mt-4 gap-2">
+        <button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          className="px-3 py-1 rounded border hover:bg-gray-100 transition"
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+
+        <span className="text-sm text-gray-500">
+          Page {currentPage} of {totalPages}
+        </span>
+
+        <button
+          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+          className="px-3 py-1 rounded border hover:bg-gray-100 transition"
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

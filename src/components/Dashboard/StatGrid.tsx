@@ -13,12 +13,12 @@ export const StatsGrid = () => {
   return (
     <div className="p-6 lg:p-8 space-y-8">
     <div>
-        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
-          Tools Catalog
+    <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
+          Internal Tools Dashboard
         </h1>
 
         <p className="text-gray-500 mt-2">
-          Manage and monitor all SaaS tools across your organization
+            Monitor and manage your organization's software tools and expenses
         </p>
       </div>
 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-8">
