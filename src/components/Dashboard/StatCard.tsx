@@ -1,6 +1,6 @@
 type StatCardProps = {
   title: string;
-  value: string;
+  value: string | number;
   maxValue?: string;
   percentage?: string;
   variant?: "green" | "violet" | "orange" | "red";
@@ -70,7 +70,7 @@ const formatMaxValue = (num?: string | number) => {
       {/* Value */}
       <div className="mt-6 flex items-end gap-2">
         <span className="text-3xl font-bold text-gray-900">{isCurrency ? formatCurrency(value) : value}</span>
-        {maxValue && <span className="text-2xl font-semibold text-gray-400">/{isCurrency ? formatCurrency(value) : value}</span>}
+        {maxValue && <span className="text-2xl font-semibold text-gray-400">/{isCurrency ? formatMaxValue(maxValue) : maxValue}</span>}
       </div>
 
       {/* Percentage Badge */}

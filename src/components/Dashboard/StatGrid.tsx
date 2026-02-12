@@ -29,6 +29,7 @@ export const StatsGrid = () => {
   percentage={analytics?.kpi_trends.budget_change ?? ''}
   variant="green"
   icon={<TrendingUp size={18} />}
+  isCurrency
 />
 
 <StatCard
@@ -49,10 +50,11 @@ export const StatsGrid = () => {
 
 <StatCard
   title="Cost/User"
-  value={`€${analytics?.cost_analytics.cost_per_user}`}
+  value={analytics?.cost_analytics.cost_per_user ?? 0}
   percentage={analytics?.kpi_trends.cost_per_user_change ?? ''}
   variant="red"
   icon={<User size={18} />}
+  isCurrency
 />
 
 </div>
