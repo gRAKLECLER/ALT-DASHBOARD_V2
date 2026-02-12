@@ -2,11 +2,14 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   theme: {
-    screens: {
-        mobile: "640px",
-        desktop: "1164px", // ton vrai breakpoint
+    extend: {
+        screens: {
+            mobile: "0px",
+            tablet: "768px",
+            desktop: "1164px",
+            wide: "1440px",
+          },
     },
-    extend: {},
   },
   plugins: [],
 };

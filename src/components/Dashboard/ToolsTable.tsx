@@ -19,7 +19,15 @@ export const ToolsTable = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-[0px_10px_30px_-15px_rgba(0,0,0,0.15)] p-8">
+    <div className="
+        m-8
+        rounded-2xl
+        shadow-sm
+        border
+        border-gray-100
+        bg-white 
+        shadow-[0px_10px_30px_-15px_rgba(0,0,0,0.15)] 
+        p-8">
       
       {/* Header */}
       <div className="flex items-center justify-between mb-8">

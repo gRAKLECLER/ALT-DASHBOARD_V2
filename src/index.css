@@ -40,6 +40,10 @@
   }
 }
 
+@media (min-width: 1164px) {
+  display: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
