@@ -1,6 +1,6 @@
-type Status = "active" | "unused" | "expiring" | "disabled" | "archived";
+import type { ToolStatus } from "../../types/tools";
 
-const statusStyles: Record<Status, string> = {
+const statusStyles: Record<ToolStatus, string> = {
   active: "from-emerald-400 to-emerald-700",
   unused: "from-pink-500 to-red-700",
   expiring: "from-orange-400 to-orange-700",
@@ -8,7 +8,7 @@ const statusStyles: Record<Status, string> = {
   archived: "from-purple-400 to-purple-700",
 };
 
-export const StatusBadge = ({ status }: { status: Status }) => {
+export const StatusBadge = ({ status }: { status: ToolStatus }) => {
   return (
     <span
       className={`
