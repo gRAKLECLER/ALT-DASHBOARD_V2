@@ -1,4 +1,17 @@
-export type SubscriptionStatus = "active" | "unused" | "expiring";
+export type ToolStatus =
+  | "active"
+  | "unused"
+  | "expiring"
+  | "disabled"
+  | "archived";
+
+export type ToolCategory =
+  | "communication"
+  | "development"
+  | "design"
+  | "marketing"
+  | "productivity"
+  | "analytics";
 
 export interface Tools {
   id: number;
@@ -7,7 +20,7 @@ export interface Tools {
   vendor: string;
   category: string;
   owner_department: string;
-  status: SubscriptionStatus;
+  status: ToolStatus;
   website_url: string;
   icon_url: string;
   monthly_cost?: number | string;
