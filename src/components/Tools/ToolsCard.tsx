@@ -8,23 +8,14 @@ interface ToolCardProps {
   tool: Tools;
   onEdit: (id: number) => void;
   onView: (id: number) => void;
-//   onToggleStatus: (tool: Tools) => void;
 }
 
 export const ToolCard = ({
   tool,
   onEdit,
   onView,
-//   onToggleStatus,
 }: ToolCardProps) => {
   const isActive = tool.status === "active";
-
-  const badgeGradientMap: Record<string, string> = {
-    green: "from-emerald-400 to-emerald-700",
-    violet: "from-purple-400 to-purple-700",
-    orange: "from-orange-400 to-orange-700",
-    red: "from-pink-500 to-red-700",
-  };
 
   return (
     <div
@@ -42,7 +33,6 @@ export const ToolCard = ({
         group
       "
     >
-      {/* Header */}
       <div className="flex justify-between items-start">
         <div>
         <div className="flex align-center">
@@ -60,7 +50,6 @@ export const ToolCard = ({
         <StatusBadge status={tool.status} />
       </div>
 
-      {/* Body */}
       <div className="mt-6 space-y-2 text-sm text-gray-600">
         <p>
           <span className="font-medium text-gray-800">
@@ -98,7 +87,6 @@ export const ToolCard = ({
         </p>
       </div>
 
-      {/* Actions */}
       <div
         className="
           mt-6
@@ -124,7 +112,6 @@ export const ToolCard = ({
         </button>
 
         <button
-        //   onClick={() => onToggleStatus(tool)}
           className={`transition ${
             isActive
               ? "text-red-500 hover:text-red-700"

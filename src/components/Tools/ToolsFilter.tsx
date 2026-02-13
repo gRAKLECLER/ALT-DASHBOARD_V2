@@ -1,4 +1,5 @@
 import type { ToolFilters } from "../../types/tools-filter";
+import { InputField } from "../Basic/InpurField";
 
 interface ToolsFiltersProps {
   filters: ToolFilters;
@@ -14,108 +15,79 @@ export const ToolsFilters = ({
 }: ToolsFiltersProps) => {
   return (
     <div className="
-      flex
-      flex-col
-      gap-4
-      lg:flex-row
-      lg:flex-wrap
-      lg:items-end
-         bg-white
-      p-6
-      rounded-2xl
-      shadow-sm
-      border
-      border-gray-100
+        flex
+        flex-col
+        gap-4
+        lg:flex-row
+        lg:flex-wrap
+        lg:items-end
+        bg-white
+        p-6
+        rounded-2xl
+        shadow-sm
+        border
+        border-gray-100
     ">
-
-      {/* Department */}
       <div className="flex flex-col w-full lg:w-48">
-        <label className="text-sm text-gray-500">
-          Department
-        </label>
-        <select
-          className="mt-1 border rounded-xl p-2"
-          value={filters.department_id ?? ""}
-          onChange={(e) =>
-            updateFilter(
-              "department_id",
-              e.target.value
-                ? Number(e.target.value)
-                : undefined
-            )
-          }
-        >
-          <option value="">All</option>
-          <option value="1">Engineering</option>
-          <option value="2">Marketing</option>
-          <option value="3">Design</option>
-          <option value="4">Sales</option>
-          <option value="5">HR</option>
-        </select>
+        <InputField
+            label="Department"
+            type="select"
+            value={filters.department_id}
+            required
+            onChange={(val) => updateFilter("department_id", val ? Number(val) : undefined)}
+            options={[
+                { value: "", label: "All" },
+                { value: 1, label: "Engineering" },
+                { value: 2, label: "Marketing" },
+                { value: 3, label: "Design" },
+                { value: 4, label: "Sales" },
+                { value: 5, label: "HR" },
+            ]}
+        />
       </div>
-
-      {/* Status */}
       <div className="flex flex-col w-full lg:w-40">
-        <label className="text-sm text-gray-500">
-          Status
-        </label>
-        <select
-          className="mt-1 border rounded-xl p-2"
-          value={filters.status ?? ""}
-          onChange={(e) =>
-            updateFilter(
-              "status",
-              e.target.value || undefined
-            )
-          }
-        >
-          <option value="">All</option>
-          <option value="active">Active</option>
-          <option value="expiring">Expiring</option>
-          <option value="unused">Unused</option>
-        </select>
+        <InputField
+            label="Status"
+            type="select"
+            value={filters.status ?? ""}
+            required
+            onChange={(val) => updateFilter("status", val || undefined)}
+            options={[
+                { value: "", label: "All" },
+                { value: "active", label: "Active" },
+                { value: "expiring", label: "Expiring" },
+                { value: "unused", label: "Unused" },
+            ]}
+        />
       </div>
 
       {/* Category */}
       <div className="flex flex-col w-full lg:w-48">
-        <label className="text-sm text-gray-500">
-          Category
-        </label>
-        <select
-          className="mt-1 border rounded-xl p-2"
-          value={filters.category ?? ""}
-          onChange={(e) =>
-            updateFilter(
-              "category",
-              e.target.value || undefined
-            )
-          }
-        >
-          <option value="">All</option>
-          <option value="communication">Communication</option>
-          <option value="development">Development</option>
-          <option value="design">Design</option>
-          <option value="marketing">Marketing</option>
-        </select>
+        <InputField
+            label="Category"
+            type="select"
+            value={filters.category ?? ""}
+            required
+            onChange={(val) => updateFilter("category", val || undefined)}
+            options={[
+                { value: "", label: "All" },
+                { value: "communication", label: "Communication" },
+                { value: "development", label: "Development" },
+                { value: "design", label: "Design" },
+                { value: "marketing", label: "Marketing" },
+            ]}
+        />
       </div>
 
       {/* Cost Max */}
       <div className="flex flex-col w-full lg:w-32">
-        <label className="text-sm text-gray-500">
-          Max Cost
-        </label>
-        <input
-          type="number"
-          placeholder="100"
-          className="mt-1 border rounded-xl p-2"
-          onChange={(e) =>
-            updateFilter(
-              "maxCost",
-              e.target.value
-                ? Number(e.target.value)
-                : undefined
-            )
-          }
+        <InputField
+        label="Max Cost"
+        type="number"
+        placeholder="100"
+        value={filters.maxCost}
+        required
+        onChange={(val) => updateFilter("maxCost", val ? Number(val) : undefined)}
         />
       </div>
 

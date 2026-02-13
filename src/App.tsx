@@ -14,7 +14,6 @@ function App() {
         </div>} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/analytics" element={<Analytics />} />
-        {/* <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </div>
   );

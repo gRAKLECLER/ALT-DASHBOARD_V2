@@ -15,8 +15,6 @@ function Analytics() {
 
   return (
     <div className="p-6 md:p-8 space-y-8 bg-gray-50 min-h-screen">
-      
-      {/* Page Title */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">
           Analytics Overview

@@ -42,7 +42,7 @@ export const Header = () => {
   );
 
   return (
-    <header className="w-full border-b bg-white px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <header className="w-full shadow-sm border-b border-gray-100 bg-white px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
    
       <div className="flex items-center gap-4">
         
@@ -65,7 +65,7 @@ export const Header = () => {
      
       <div className="hidden lg:flex items-center gap-4">
       
-        <div className="flex items-center border rounded-lg px-3 py-2 text-sm text-gray-500 focus-within:ring-2 focus-within:ring-purple-500">
+        <div className="flex items-center border border-gray-300 mt-1 rounded-xl p-2 px-3 py-2 text-sm text-gray-500 focus-within:ring-2 focus-within:ring-purple-500">
           <Search size={16} className="mr-2" />
           <input placeholder={getSearchPlaceholder()} className="outline-none bg-transparent" />
         </div>
@@ -87,7 +87,7 @@ export const Header = () => {
           </button>
 
           {userMenuOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-md py-2 text-sm">
+            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-md py-2 text-sm">
               <NavLink to="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</NavLink>
               <NavLink to="/settings" className="block px-4 py-2 hover:bg-gray-100">Settings</NavLink>
               <button className="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
@@ -106,7 +106,7 @@ export const Header = () => {
           </NavLink>
 
          
-          <div className="flex items-center border rounded-lg px-3 py-2 text-sm text-gray-500 focus-within:ring-2 focus-within:ring-purple-500">
+          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-500 focus-within:ring-2 focus-within:ring-purple-500">
             <Search size={16} className="mr-2" />
             <input placeholder={getSearchPlaceholder()} className="outline-none bg-transparent w-full" />
           </div>
