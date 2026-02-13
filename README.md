@@ -1,74 +1,142 @@
-# React + TypeScript + Vite
+# 🚀 Alt Dashboard v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Alt Dashboard v2 est une application de monitoring interne des outils SaaS développée pour une équipe IT.
 
-Currently, two official plugins are available:
+L’objectif est de proposer une interface claire et moderne permettant de visualiser, filtrer et analyser les outils utilisés au sein d’une organisation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧭 Pages principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🏠 Dashboard (`/`)
 
-## Expanding the ESLint configuration
+* Vue globale avec KPIs
+* Cartes récapitulatives
+* Layout responsive en grid
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🛠 Tools (`/tools`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Catalogue complet des outils
+* Filtres dynamiques (département, statut, catégorie, coût)
+* Recherche par nom
+* Composants réutilisables (cards, badges, inputs)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 📊 Analytics (`/analytics`)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Visualisation des données
+* Analyse des tendances
+* Présentation structurée et claire des métriques
+
+---
+
+## 🎯 Objectifs du projet
+
+* Construire un **design system cohérent**
+* Créer des **composants réutilisables**
+* Assurer un **responsive design mobile-first**
+* Mettre en place une navigation fluide
+* Maintenir un code propre et typé avec TypeScript
+
+---
+
+## 🛠 Stack technique
+
+### ⚛️ Framework & Langage
+
+* React 19
+* TypeScript
+* Vite
+
+### 🎨 UI & Styling
+
+* Tailwind CSS
+* Lucide React (icônes)
+
+### 🧭 Routing
+
+* React Router DOM v7
+
+### 🧹 Qualité
+
+* ESLint
+* TypeScript strict mode
+
+---
+
+## 📦 Dépendances principales
+
+```json
+"dependencies": {
+  "@tailwindcss/vite": "^4.1.18",
+  "lucide-react": "^0.563.0",
+  "react": "^19.2.0",
+  "react-dom": "^19.2.0",
+  "react-router-dom": "^7.13.0"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Installation & Lancement
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1️⃣ Cloner le projet
+
+```bash
+git clone https://github.com/gRAKLECLER/ALT-DASHBOARD_V2.git
+cd alt-dashboardv2
 ```
-# ALT-DASHBOARD_V2
+
+### 2️⃣ Installer les dépendances
+
+```bash
+yarn
+```
+
+### 3️⃣ Lancer le serveur de développement
+
+```bash
+yarn dev
+```
+---
+
+## 📂 Architecture du projet
+
+```
+src/
+├── components/       # Composants réutilisables (cards, badges, inputs)
+├── hooks/            # Hooks personnalisés
+├── pages/            # Dashboard, Tools, Analytics
+├── types/           # Configuration Tailwind
+└── App.tsx           # Routing & layout global
+```
+
+ℹ️ L’architecture ne comprend pas de dossier `utils`.
+Le projet reste volontairement simple et structuré autour des composants, hooks et pages.
+
+---
+
+## 🎨 Choix CSS & UI
+
+### Tailwind CSS
+
+* Design system cohérent
+* Approche utility-first
+* Responsive mobile-first
+* Rapidité de développement
+
+### Lucide React
+
+* Icônes modernes et légères
+* Intégration simple dans les composants
+* Personnalisation via props
+
+L’association Tailwind + Lucide permet une interface moderne sans dépendances lourdes.
+
+---
+
+## 🔮 Améliorations futures
+
+* 🌙 Ajout d’un **mode Dark / Light** avec sauvegarde en localStorage
+* 🧪 Ajout de **tests unitaires et tests d’intégration** pour améliorer la qualité et la robustesse du projet
+
+---
