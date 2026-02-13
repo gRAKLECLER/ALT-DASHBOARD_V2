@@ -61,7 +61,6 @@ const formatMaxValue = (num?: string | number) => {
       hover:shadow-lg
     `}
   >
-       {/* Icon */}
        <div className="absolute top-6 right-6">
         <div
           className={`
@@ -75,12 +74,10 @@ const formatMaxValue = (num?: string | number) => {
         </div>
       </div>
 
-      {/* Title */}
       <p className="text-gray-500 text-sm font-medium">
         {title}
       </p>
 
-      {/* Value */}
       <div className="mt-6 flex items-end gap-2">
         <span className="text-3xl font-bold text-gray-900">
           {isCurrency ? formatCurrency(value) : value}
@@ -93,7 +90,6 @@ const formatMaxValue = (num?: string | number) => {
         )}
       </div>
 
-      {/* Percentage Badge */}
       {percentage && (
         <div className="mt-4">
           <span className={`

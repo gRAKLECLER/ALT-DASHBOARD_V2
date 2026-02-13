@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTools } from "../../hooks/get/useDashboardTools";
+import type { ToolStatus } from "../../types/tools";
 
 export const ToolsTable = () => {
   const { tools } = useTools();
@@ -7,30 +8,13 @@ export const ToolsTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Calcul des pages
   const totalPages = tools ? Math.ceil(tools.length / itemsPerPage) : 0;
 
-  // Items affichés sur la page courante
   const currentItems = tools
     ? tools.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
     : [];
 
-//   const getStatusStyle = (status?: string) => {
-//     if (!status) return "bg-gray-100 text-gray-500";
-
-//     switch (status.toLowerCase()) {
-//       case "active":
-//         return "from-emerald-400 to-emerald-700";
-//       case "expiring":
-//         return "bg-amber-50 text-amber-600";
-//       case "unused":
-//         return "bg-rose-50 text-rose-600";
-//       default:
-//         return "bg-gray-100 text-gray-500";
-//     }
-//   };
-
-  const statusStyles: Record<Status, string> = {
+  const statusStyles: Record<ToolStatus, string> = {
     active: "from-emerald-400 to-emerald-700",
     unused: "from-pink-500 to-red-700",
     expiring: "from-orange-400 to-orange-700",
@@ -69,8 +53,6 @@ export const ToolsTable = () => {
               <th className="text-left py-4 font-medium w-[15%]">Status</th>
             </tr>
           </thead>
-
-          {/* Body */}
           <tbody>
             {currentItems?.map((item) => (
               <tr
@@ -81,7 +63,6 @@ export const ToolsTable = () => {
                 transition-colors
               "
             >
-                {/* TOOL */}
                 <td className="py-5">
                   <div className="flex items-center gap-4">
                     
@@ -98,28 +79,19 @@ export const ToolsTable = () => {
                     </span>
                   </div>
                 </td>
-
-                {/* DEPARTMENT */}
                 <td className="py-5 text-gray-600">
                   {item.owner_department}
                 </td>
-
-                {/* USERS */}
                 <td className="py-5 text-gray-600">
                   {item.active_users_count ?? 0}
                 </td>
-
-                {/* COST */}
                 <td className="py-5 text-gray-600">
                   €{item.monthly_cost ?? 0}
                 </td>
-
-                {/* STATUS */}
                 <td className="py-5">
                   <span
                     className={`text-white inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${statusStyles[item.status]}`}
                   >
-                   
                     {item.status}
                   </span>
                 </td>
